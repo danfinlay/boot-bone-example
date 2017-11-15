@@ -1,0 +1,18 @@
+{
+  "name": "boot-bone-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run clean && npm run build && npm run deploy && npm run server",
+    "clean": "rm -rf build && mkdir build",
+    "build": "cp public/index.html build/ && browserify --standalone createBackgroundProcess public/back.js > build/back.js",
+    "deploy": "ipfs add --quieter --recursive build | ipfs name publish",
+    "server": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "boot-bone": "^1.0.0"
+  }
+}
